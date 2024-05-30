@@ -10,7 +10,7 @@ const { Client } = pg.default
     })
     await client.connect()
 
-    // Fetch the first 5 Bookmarks with missing imageUrls
+    // Fetch the first 10 Bookmarks with missing imageUrls
     const { rows } = await client.query(
       `SELECT id, url, "userId"
       FROM "Bookmark"
@@ -19,7 +19,7 @@ const { Client } = pg.default
       LIMIT $2`,
       [
         process.env.SUPABASE_URL + '%',
-        process.env.BOOKMARKS_CHUNK ? parseInt(process.env.BOOKMARKS_CHUNK) : 5,
+        process.env.BOOKMARKS_CHUNK ? parseInt(process.env.BOOKMARKS_CHUNK) : 10,
       ]
     )
 
