@@ -48,39 +48,6 @@ $ docker build . -t briefkasten-scrape:latest
 
 This will execute and fetch the first 10 Bookmarks with missing cover images and attempt to capture them with Playwright. They will be uploaded to your image store of choice and then displayed for the user the next time they open their Briefkasten.
 
-## ⌚ Running the container automatically via a cronjob
-
-1. Install your favourite `cron` distribution
-
-```sh
-$ sudo apt install cronie
-```
-
-2. Enable and start the service
-
-```sh
-$ sudo systemctl enable cronie
-$ sudo systemctl start cronie
-```
-
-3. Edit your crontab
-
-```sh
-$ crontab -e
-```
-
-You can configure it to run each 20 minutes; for this, add the following line, and save the file:
-
-```
-*/20 * * * * docker run --rm --name briefkasten-scrape --network briefkasten_default --env-file /PATH/TO/YOUR/.ENV_FILE briefkasten-scrape:latest
-```
-
-`--network` is the network the `briefkasten` docker compose is using. Probably no need to change.
-
-You need to edit `/PATH/TO/YOUR/ENVFILE` above pointing to your `ENVFILE`
-
-If you want to run your cronjob on another period, you can check the respective codes in https://crontab.guru
-
 ## 🏗 Contributing
 
 Open to all contributions, please stick to formatting settings in your PR though!
