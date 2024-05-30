@@ -48,6 +48,8 @@ $ docker build . -t briefkasten-scrape:latest
 
 This will execute and fetch the first 10 Bookmarks with missing cover images and attempt to capture them with Playwright. They will be uploaded to your image store of choice and then displayed for the user the next time they open their Briefkasten.
 
+4. Next step: the sixth-step in https://github.com/Tuscan-blue/briefkasten?tab=readme-ov-file#-docker 
+
 ## 🏗 Contributing
 
 Open to all contributions, please stick to formatting settings in your PR though!
