@@ -18,29 +18,16 @@ To run this yourself, you'll need a Github account and a few environment variabl
 1. Clone the repository
 
 ```sh
-$ git clone ssh://github.com/ndom91/briefkasten-scrape
+$ git clone https://github.com/Tuscan-blue/briefkasten-scrape.git
 $ cd briefkasten-scrape
 ```
 
-2. Install dependencies
-
-```sh
-$ npm install
-```
-
-3. Build Docker container
-
-```sh
-$ docker build . -t briefkasten-scrape:latest
-```
-
-4. Copy `.env.example` to `.env` and edit the file `.env` accordingly
+2. Copy `.env.example` to `.env` and edit the file `.env` accordingly
 
 ```sh
 $ cp .env.example .env
 $ vim .env
 ```
-
 #### **File `.env.example` for reference**
 
 ```
@@ -50,21 +37,16 @@ SUPABASE_KEY=
 SUPABASE_URL=
 SUPABASE_BUCKET_ID=
 
-BOOKMARKS_CHUNK=5
+BOOKMARKS_CHUNK=10
 ```
 
-5. Run container
+3. Build Docker container
 
 ```sh
-$ docker run \
-  --rm \
-  --name briefkasten-scrape \
-  --network briefkasten_default \
-  --env-file .env
-  briefkasten-scrape:latest
+$ docker build . -t briefkasten-scrape:latest
 ```
 
-This will execute and fetch the first 5 Bookmarks with missing cover images and attempt to capture them with Playwright. They will be uploaded to your image store of choice and then displayed for the user the next time they open their Briefkasten.
+This will execute and fetch the first 10 Bookmarks with missing cover images and attempt to capture them with Playwright. They will be uploaded to your image store of choice and then displayed for the user the next time they open their Briefkasten.
 
 ## ⌚ Running the container automatically via a cronjob
 
